@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Colesterol LDL e HDL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eaf6fb;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+      color: #fff;
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      text-align: center;
+      border-radius: 0 0 2rem 2rem;
+      box-shadow: 0 4px 16px rgba(24,90,157,0.12);
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: #fff;
+      border-radius: 1.5rem 1.5rem 0 0;
+      box-shadow: 0 2px 12px rgba(24,90,157,0.08);
+      margin: 2rem auto 0 auto;
+      max-width: 1100px;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+    .tab-btn {
+      flex: 1 1 auto;
+      padding: 1rem 2rem;
+      border: none;
+      background: none;
+      font-size: 1.1rem;
+      color: #185a9d;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: background 0.2s, color 0.2s, border-bottom 0.2s;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+      color: #fff;
+      border-bottom: 3px solid #43cea2;
+      font-weight: bold;
+    }
+    .tab-content {
+      background: #fff;
+      border-radius: 0 0 1.5rem 1.5rem;
+      box-shadow: 0 4px 24px rgba(24,90,157,0.10);
+      padding: 2rem;
+      max-width: 1100px;
+      margin: 0 auto 2rem auto;
+      min-height: 300px;
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .section-title {
+      color: #185a9d;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+      border-left: 6px solid #43cea2;
+      padding-left: 0.5rem;
+      background: #eaf6fb;
+      border-radius: 0.3rem;
+      display: inline-block;
+    }
+    ul {
+      margin-left: 1.2rem;
+    }
+    .info-box {
+      background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+      color: #fff;
+      border-radius: 1rem;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(67,206,162,0.10);
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.3em 0.8em;
+      border-radius: 0.5em;
+      font-size: 1em;
+      font-weight: bold;
+      color: #fff;
+      margin-right: 0.5em;
+    }
+    .badge-ldl { background: #e53935; }
+    .badge-hdl { background: #43cea2; }
+    .footer {
+      text-align: center;
+      color: #185a9d;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      margin-top: 2rem;
+      opacity: 0.7;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+    th, td {
+      padding: 0.5em;
+      border: 1px solid #43cea2;
+      text-align: left;
+    }
+    th {
+      background: #185a9d;
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .tabs {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .tab-btn {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+      }
+      .tab-content {
+        padding: 1rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Colesterol LDL e HDL</h1>
+    <p>
+      O colesterol é absolutamente essencial para o funcionamento do corpo humano, mas seu equilíbrio é fundamental para a saúde. Conheça as diferenças entre LDL, HDL e saiba como manter seus níveis ideais para garantir uma vida longa e saudável!
+    </p>
+  </div>
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" data-tab="visao">Visão Geral</button>
+    <button class="tab-btn" data-tab="hdl">HDL</button>
+    <button class="tab-btn" data-tab="ldl">LDL</button>
+    <button class="tab-btn" data-tab="comparativo">Comparativo</button>
+    <button class="tab-btn" data-tab="prevencao">Prevenção</button>
+    <button class="tab-btn" data-tab="alimentacao">Alimentação</button>
+    <button class="tab-btn" data-tab="exames">Exames</button>
+    <button class="tab-btn" data-tab="curiosidades">Curiosidades</button>
+  </div>
+  <div id="visao" class="tab-content active">
+    <div class="info-box">
+      O colesterol é uma gordura natural presente em todas as células do corpo. Ele é fundamental para a produção de hormônios, vitamina D e para a formação das membranas celulares. O corpo precisa de colesterol para funcionar corretamente! Manter o equilíbrio entre as frações de colesterol é uma atitude afirmativa e indispensável para a saúde cardiovascular.
+    </div>
+    <h2 class="section-title">O que é colesterol?</h2>
+    <p>
+      O colesterol é um tipo de gordura (lipídio) essencial para o funcionamento do organismo. Ele é produzido principalmente pelo fígado, mas também é obtido através da alimentação, especialmente de produtos de origem animal como carnes, ovos, leite e derivados. O colesterol está presente em todas as células do corpo, sendo indispensável para a formação das membranas celulares, produção de hormônios esteroides (como testosterona, estrógeno e cortisol), síntese de vitamina D e fabricação dos ácidos biliares, que ajudam na digestão das gorduras.
+    </p>
+    <p>
+      Apesar de ser frequentemente associado a problemas de saúde, o colesterol é absolutamente vital para o corpo humano. Sem ele, não seria possível produzir hormônios importantes, sintetizar vitamina D ou garantir a integridade das células. O colesterol circula no sangue ligado a proteínas, formando lipoproteínas, sendo as principais o LDL (colesterol ruim) e o HDL (colesterol bom).
+    </p>
+    <h2 class="section-title">Funções do colesterol</h2>
+    <ul>
+      <li>Componente estrutural das membranas celulares, garantindo sua integridade e funcionamento.</li>
+      <li>Precursor de hormônios esteroides como testosterona, estrógeno, progesterona e cortisol.</li>
+      <li>Essencial para a produção de vitamina D, fundamental para ossos e imunidade.</li>
+      <li>Participa da formação dos ácidos biliares, indispensáveis para a digestão de gorduras.</li>
+      <li>Importante para o desenvolvimento e funcionamento do sistema nervoso e do cérebro.</li>
+    </ul>
+    <h2 class="section-title">Fontes de colesterol</h2>
+    <ul>
+      <li><strong>Endógena:</strong> O próprio corpo produz cerca de 70% do colesterol, principalmente no fígado.</li>
+      <li><strong>Exógena:</strong> O restante vem da alimentação, especialmente de produtos de origem animal.</li>
+    </ul>
+    <h2 class="section-title">Por que o equilíbrio é importante?</h2>
+    <p>
+      O excesso de colesterol, principalmente o LDL, pode se acumular nas artérias e aumentar o risco de doenças cardiovasculares, como infarto e AVC. Já o HDL ajuda a remover o colesterol ruim, protegendo o coração. Manter níveis adequados de colesterol é uma decisão afirmativa para garantir saúde e qualidade de vida.
+    </p>
+  </div>
+  <div id="hdl" class="tab-content">
+    <div class="info-box"><span class="badge badge-hdl">HDL</span> O HDL é conhecido como "colesterol bom" porque protege o coração e é um verdadeiro aliado da saúde!</div>
+    <h2 class="section-title">O que é HDL?</h2>
+    <p>
+      O HDL (Lipoproteína de Alta Densidade) remove o excesso de colesterol das artérias e leva de volta ao fígado, onde é eliminado. Ter HDL alto é afirmativamente benéfico para a saúde cardiovascular!
+    </p>
+    <h2 class="section-title">Funções do HDL</h2>
+    <ul>
+      <li>Remove o excesso de colesterol das artérias, prevenindo a formação de placas de gordura.</li>
+      <li>Tem efeito anti-inflamatório e antioxidante, protegendo os vasos sanguíneos.</li>
+      <li>Reduz o risco de infarto, AVC e outras doenças cardiovasculares.</li>
+    </ul>
+    <h2 class="section-title">Valores ideais</h2>
+    <ul>
+      <li>Homens: <strong>acima de 40 mg/dL</strong></li>
+      <li>Mulheres: <strong>acima de 50 mg/dL</strong></li>
+    </ul>
+    <h2 class="section-title">Como aumentar o HDL?</h2>
+    <ul>
+      <li>Pratique exercícios físicos regularmente, como caminhadas, corridas e natação.</li>
+      <li>Consuma gorduras boas (azeite, abacate, castanhas, peixes ricos em ômega-3).</li>
+      <li>Evite fumar, pois o cigarro reduz o HDL.</li>
+      <li>Controle o peso e mantenha uma alimentação equilibrada.</li>
+    </ul>
+    <p>
+      Aumentar o HDL é uma atitude afirmativa e protetora para o coração!
+    </p>
+  </div>
+  <div id="ldl" class="tab-content">
+    <div class="info-box"><span class="badge badge-ldl">LDL</span> O LDL é conhecido como "colesterol ruim" porque pode se acumular nas artérias e causar doenças cardíacas. Controlar o LDL é uma escolha afirmativa para a saúde!</div>
+    <h2 class="section-title">O que é LDL?</h2>
+    <p>
+      O LDL (Lipoproteína de Baixa Densidade) transporta o colesterol do fígado para as células. Quando está em excesso, pode se depositar nas paredes das artérias, formando placas de gordura (ateromas) que dificultam a circulação do sangue.
+    </p>
+    <h2 class="section-title">Consequências do LDL alto</h2>
+    <ul>
+      <li>Formação de placas nas artérias (aterosclerose), aumentando o risco de infarto e AVC.</li>
+      <li>Comprometimento da circulação em órgãos importantes, podendo causar dor, insuficiência cardíaca e até morte súbita.</li>
+    </ul>
+    <h2 class="section-title">Valores ideais</h2>
+    <ul>
+      <li>Alto risco: <strong>abaixo de 70 mg/dL</strong></li>
+      <li>Risco intermediário: abaixo de 100 mg/dL</li>
+      <li>População geral: abaixo de 130 mg/dL</li>
+    </ul>
+    <h2 class="section-title">Como reduzir o LDL?</h2>
+    <ul>
+      <li>Evite gorduras saturadas e trans, presentes em frituras, carnes gordurosas e industrializados.</li>
+      <li>Pratique atividade física regularmente.</li>
+      <li>Controle o peso e a circunferência abdominal.</li>
+      <li>Se necessário, utilize medicamentos sob orientação médica.</li>
+    </ul>
+    <p>
+      Reduzir o LDL é uma atitude afirmativa para proteger o coração e garantir longevidade!
+    </p>
+  </div>
+  <div id="comparativo" class="tab-content">
+    <div class="info-box" style="background:linear-gradient(90deg,#43cea2 0%,#e53935 100%);">
+      Comparando HDL e LDL: entenda as diferenças e a importância de cada um!
+    </div>
+    <h2 class="section-title">Tabela Comparativa</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>HDL (Bom)</th>
+          <th>LDL (Ruim)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Função</td>
+          <td>Remove colesterol do sangue</td>
+          <td>Leva colesterol para as células</td>
+        </tr>
+        <tr>
+          <td>Efeito na saúde</td>
+          <td>Protege o coração</td>
+          <td>Favorece doenças cardíacas</td>
+        </tr>
+        <tr>
+          <td>Fontes alimentares</td>
+          <td>Gorduras boas, peixes, azeite</td>
+          <td>Gorduras saturadas, frituras</td>
+        </tr>
+        <tr>
+          <td>Valores desejáveis</td>
+          <td>&gt; 40 mg/dL (homens)<br>&gt; 50 mg/dL (mulheres)</td>
+          <td>&lt; 70 mg/dL (alto risco)<br>&lt; 100 mg/dL (risco intermediário)<br>&lt; 130 mg/dL (geral)</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 class="section-title">Resumo</h2>
+    <p>
+      O HDL e o LDL são essenciais para o metabolismo do colesterol, mas é o equilíbrio entre eles que determina o risco cardiovascular. Ter HDL alto e LDL baixo é o cenário ideal para a saúde do coração. Manter esse equilíbrio é uma decisão afirmativa e inteligente para quem deseja viver mais e melhor!
+    </p>
+  </div>
+  <div id="prevencao" class="tab-content">
+    <div class="info-box" style="background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);">
+      Prevenir o colesterol alto é uma escolha afirmativa para uma vida longa e saudável!
+    </div>
+    <h2 class="section-title">Dicas de Prevenção</h2>
+    <ul>
+      <li>Adote uma alimentação equilibrada, rica em fibras e pobre em gorduras ruins.</li>
+      <li>Pratique atividades físicas regularmente.</li>
+      <li>Evite o tabagismo e o consumo excessivo de álcool.</li>
+      <li>Controle o peso e o estresse.</li>
+      <li>Faça exames periódicos para monitorar seus níveis de colesterol.</li>
+      <li>Durma bem e mantenha uma rotina saudável.</li>
+    </ul>
+    <h2 class="section-title">Importância da prevenção</h2>
+    <p>
+      A prevenção é fundamental porque o colesterol alto geralmente não causa sintomas. Muitas vezes, o primeiro sinal é um evento grave, como infarto ou AVC. Por isso, adotar hábitos saudáveis é uma atitude afirmativa e indispensável para evitar surpresas e garantir qualidade de vida.
+    </p>
+  </div>
+  <div id="alimentacao" class="tab-content">
+    <div class="info-box" style="background:linear-gradient(90deg,#63d471 0%,#185a9d 100%);">
+      Uma alimentação saudável é a base para controlar o colesterol!
+    </div>
+    <h2 class="section-title">Alimentos que ajudam</h2>
+    <ul>
+      <li>Aveia, frutas, legumes, azeite de oliva, peixes, castanhas, sementes.</li>
+      <li>Alimentos ricos em fibras solúveis, como feijão, maçã e cenoura.</li>
+      <li>Peixes ricos em ômega-3, como salmão, sardinha e atum.</li>
+      <li>Soja e derivados.</li>
+    </ul>
+    <h2 class="section-title">Alimentos que devem ser evitados</h2>
+    <ul>
+      <li>Frituras, carnes gordurosas, embutidos, fast food, doces industrializados.</li>
+      <li>Gorduras trans e saturadas aumentam o LDL.</li>
+      <li>Produtos de panificação industrializados (biscoitos, bolos, salgadinhos).</li>
+    </ul>
+    <h2 class="section-title">Dicas práticas</h2>
+    <ul>
+      <li>Prefira alimentos naturais e evite ultraprocessados.</li>
+      <li>Use azeite de oliva no lugar de manteiga ou margarina.</li>
+      <li>Inclua frutas e verduras em todas as refeições.</li>
+      <li>Beba bastante água.</li>
+    </ul>
+    <h2 class="section-title">Exemplo de cardápio saudável</h2>
+    <p>
+      <strong>Café da manhã:</strong> Aveia com frutas e chia, café sem açúcar<br>
+      <strong>Almoço:</strong> Arroz integral, feijão, peito de frango grelhado, salada de folhas, tomate e azeite<br>
+      <strong>Lanche:</strong> Iogurte natural com castanhas<br>
+      <strong>Jantar:</strong> Sopa de legumes, peixe grelhado, batata-doce assada
+    </p>
+    <p>
+      Escolher uma alimentação saudável é uma decisão afirmativa e poderosa para manter o colesterol sob controle!
+    </p>
+  </div>
+  <div id="exames" class="tab-content">
+    <div class="info-box" style="background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);">
+      Exames regulares são essenciais para monitorar o colesterol e prevenir doenças!
+    </div>
+    <h2 class="section-title">Lipidograma</h2>
+    <p>
+      O exame de sangue chamado <strong>lipidograma</strong> mede os níveis de colesterol total, HDL, LDL e triglicerídeos. É o principal exame para avaliar o risco cardiovascular e deve ser realizado periodicamente, mesmo por pessoas sem sintomas.
+    </p>
+    <h2 class="section-title">Como é feito o exame?</h2>
+    <ul>
+      <li>Recomenda-se jejum de 8 a 12 horas antes da coleta.</li>
+      <li>O sangue é coletado em laboratório e analisado.</li>
+      <li>Os resultados são interpretados pelo médico, considerando fatores de risco individuais.</li>
+    </ul>
+    <h2 class="section-title">Quando fazer?</h2>
+    <ul>
+      <li>Adultos devem fazer o exame a cada 5 anos, ou conforme orientação médica.</li>
+      <li>Pessoas com fatores de risco (histórico familiar, obesidade, diabetes, hipertensão) devem fazer com mais frequência.</li>
+    </ul>
+    <h2 class="section-title">Importância do acompanhamento</h2>
+    <p>
+      O acompanhamento médico é fundamental para interpretar os resultados e definir o melhor tratamento, que pode incluir mudanças no estilo de vida e, em alguns casos, uso de medicamentos. Realizar exames é uma atitude afirmativa e responsável para cuidar da saúde!
+    </p>
+  </div>
+  <div id="curiosidades" class="tab-content">
+    <div class="info-box" style="background:linear-gradient(90deg,#43cea2 0%,#ffb347 100%);">
+      Curiosidades sobre o colesterol: saiba mais!
+    </div>
+    <ul>
+      <li>O corpo produz cerca de 70% do colesterol, o restante vem da alimentação.</li>
+      <li>Nem todo colesterol é ruim: o HDL é fundamental para a saúde.</li>
+      <li>Colesterol alto pode não apresentar sintomas, por isso os exames são importantes.</li>
+      <li>Algumas pessoas têm predisposição genética para colesterol alto.</li>
+      <li>O colesterol é essencial para a produção de hormônios sexuais e vitamina D.</li>
+      <li>O colesterol é importante para o desenvolvimento do cérebro em crianças.</li>
+      <li>Medicamentos chamados estatinas ajudam a reduzir o LDL em casos necessários.</li>
+      <li>O colesterol alto pode afetar pessoas magras e ativas, não apenas quem está acima do peso.</li>
+      <li>O HDL elevado pode compensar parcialmente o risco de LDL alto.</li>
+      <li>O colesterol é vital para a estrutura das células nervosas.</li>
+    </ul>
+    <h2 class="section-title">Dica final</h2>
+    <p>
+      Conhecimento afirmativo sobre o colesterol ajuda a tomar melhores decisões para a saúde! Pequenas mudanças no estilo de vida podem fazer grande diferença nos níveis de colesterol e na saúde do coração.
+    </p>
+  </div>
+  <div class="footer">
+    &copy; 2025 - Site educativo sobre colesterol LDL, HDL e saúde cardiovascular.
+  </div>
+  <script>
+    // Garante que o script só rode após o DOM estar carregado
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+          btn.classList.add('active');
+          var tabId = btn.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
